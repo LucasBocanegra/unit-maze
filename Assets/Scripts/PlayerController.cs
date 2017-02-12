@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	public Text countText;
 	public Text winText;
+    public GameObject painelVenceu;
     public GameObject pickup0, pickup1, pickup2, pickup3, pickup4, pickup5, pickup6;
 
 	private Rigidbody rb;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
 		count = 0;
         ganhou = false;
         winText.enabled = false;
+        painelVenceu.SetActive(false);
 
         pickup0.SetActive(false);
         pickup1.SetActive(false);
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
             if (count >= 5) // Mudar para o valor de objetos que deve encontrar!
             {
+                painelVenceu.SetActive(true);
                 winText.enabled = true;
                 ganhou = true;
             }
