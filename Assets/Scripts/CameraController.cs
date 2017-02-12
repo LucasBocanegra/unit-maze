@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public static float rotationAngle = 0;
 	float speed = 10f;
 	private Vector3 offset;
+    private float rotateSensitivity = 0.5f;
 
 	void Start()
 	{
@@ -20,20 +21,21 @@ public class CameraController : MonoBehaviour
 	{
 
 		transform.position = player.transform.position;
-		if (Input.GetKey(KeyCode.Q))
+
+        if (Input.GetKey(KeyCode.Q))
 		{
 			float my_y = transform.rotation.eulerAngles.y;
-			transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
-			player.transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
+			transform.rotation = Quaternion.Euler(0, (my_y - rotateSensitivity), 0);
+			player.transform.rotation = Quaternion.Euler(0, (my_y - rotateSensitivity), 0);
             rotationAngle = my_y - 5;
 		}
 
 		if (Input.GetKey(KeyCode.E))
 		{
 			float my_y = transform.rotation.eulerAngles.y;
-			transform.rotation = Quaternion.Euler(0, (my_y + 5), 0);
-			player.transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
-            rotationAngle = my_y - 5;
+			transform.rotation = Quaternion.Euler(0, (my_y + rotateSensitivity), 0);
+			player.transform.rotation = Quaternion.Euler(0, (my_y + rotateSensitivity), 0);
+            rotationAngle = my_y + rotateSensitivity;
 		}
 
 	}
