@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
 	public GameObject player;
+    public static float rotationAngle = 0;
 	float speed = 10f;
 	private Vector3 offset;
 
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
 			float my_y = transform.rotation.eulerAngles.y;
 			transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
 			player.transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
+            rotationAngle = my_y - 5;
 		}
 
 		if (Input.GetKey(KeyCode.E))
@@ -31,7 +33,7 @@ public class CameraController : MonoBehaviour
 			float my_y = transform.rotation.eulerAngles.y;
 			transform.rotation = Quaternion.Euler(0, (my_y + 5), 0);
 			player.transform.rotation = Quaternion.Euler(0, (my_y - 5), 0);
-
+            rotationAngle = my_y - 5;
 		}
 
 	}

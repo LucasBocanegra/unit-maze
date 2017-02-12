@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
 		float moveVertical = Input.GetAxis("Vertical");
 
 		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        movement = Quaternion.Euler(0, CameraController.rotationAngle, 0) * movement;
 
         if (!ganhou)
 		    rb.AddForce(movement * speed);
